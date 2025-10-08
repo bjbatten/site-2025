@@ -60,7 +60,7 @@ export const siteConfig = {
       title: "Not Another Microblog",
       description: "Lightweight microblogging app with Supabase backend and modern UI for quick posting and sharing.",
       href: "https://not-another-microblog.netlify.app",
-      logo: "/microblog-icon.jpg",
+      logo: "/network-nodes-icon.jpg",
       tags: ["Supabase", "React", "TypeScript"],
     },
   ] as Project[],
