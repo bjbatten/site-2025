@@ -57,11 +57,11 @@ export const siteConfig = {
       tags: ["React", "Storybook", "CSS"],
     },
     {
-      title: "API Gateway",
-      description: "Microservices API gateway with rate limiting and auth",
-      href: "https://github.com/bjbatten/",
-      logo: "/network-nodes-icon.jpg",
-      tags: ["Node.js", "Express", "Redis"],
+      title: "Not Another Microblog",
+      description: "Lightweight microblogging app with Supabase backend and modern UI for quick posting and sharing.",
+      href: "https://not-another-microblog.netlify.app",
+      logo: "/microblog-icon.jpg",
+      tags: ["Supabase", "React", "TypeScript"],
     },
   ] as Project[],
 
