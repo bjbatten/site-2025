@@ -81,7 +81,7 @@ export const siteConfig = {
       ],
       techStack: {
         "Frontend": ["Next.js 15", "TypeScript", "Tailwind CSS", "Radix UI", "Recharts"],
-        "Backend": ["Node.js", "Express", "Drizzle ORM", "SQLite", "JWT"],
+        "Backend": ["Node.js", "Express", "Drizzle ORM", "Neon PostgreSQL", "JWT"],
         "DevOps": ["Netlify", "Render", "GitHub Actions"]
       },
       status: "active",
