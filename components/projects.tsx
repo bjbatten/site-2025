@@ -2,6 +2,7 @@ import { siteConfig } from "@/config/site"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ExternalLink } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export function Projects() {
   return (
@@ -10,7 +11,7 @@ export function Projects() {
         <h2 className="text-2xl md:text-3xl font-bold mb-8">Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {siteConfig.projects.map((project) => (
-            <a key={project.title} href={project.href} target="_blank" rel="noopener noreferrer" className="group">
+            <Link key={project.id} href={project.href} className="group">
               <Card className="h-full transition-all hover:border-primary hover:shadow-lg">
                 <CardHeader>
                   <div className="flex items-start justify-between gap-4">
@@ -30,7 +31,9 @@ export function Projects() {
                         {project.title}
                       </CardTitle>
                     </div>
-                    <ExternalLink className="w-4 h-4 flex-shrink-0 text-muted-foreground group-hover:text-primary transition-colors" />
+                    <div className="w-4 h-4 flex-shrink-0 text-muted-foreground group-hover:text-primary transition-colors">
+                      →
+                    </div>
                   </div>
                   <CardDescription className="text-sm leading-relaxed">{project.description}</CardDescription>
                 </CardHeader>
@@ -46,7 +49,7 @@ export function Projects() {
                   </CardContent>
                 )}
               </Card>
-            </a>
+            </Link>
           ))}
         </div>
       </div>
