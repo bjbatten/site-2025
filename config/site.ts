@@ -172,7 +172,7 @@ export const siteConfig = {
       detailedDescription: "A streamlined microblogging platform that focuses on simplicity and user experience. Built with modern web technologies, it provides a clean interface for sharing thoughts, links, and media. The application leverages Supabase for real-time data synchronization, user authentication, and database management, creating a responsive and interactive social media experience without the complexity of larger platforms.",
       href: "/projects/not-another-microblog",
       logo: "/checklist-icon.png",
-      images: ["/projects/microblog/feed.png", "/projects/microblog/compose.png"],
+      images: ["/projects/microblog/feed.png", "/projects/microblog/compose.png", "/projects/microblog/profile.png", "/projects/microblog/post.png"],
       tags: ["Supabase", "React", "TypeScript"],
       repositories: [
         {
@@ -183,9 +183,9 @@ export const siteConfig = {
       ],
       liveUrl: "https://not-another-microblog.netlify.app",
       demoCredentials: {
-        username: "demo@microblog.com",
+        username: "demo@microblog.com", 
         password: "demo123",
-        notes: "Demo account with sample posts and interactions"
+        notes: "Read-only demo account - explore, like posts, and follow users (posting disabled)"
       },
       features: [
         "Real-time post synchronization",
