@@ -171,7 +171,7 @@ export const siteConfig = {
       description: "Lightweight microblogging app with Supabase backend and modern UI for quick posting and sharing.",
       detailedDescription: "A streamlined microblogging platform that focuses on simplicity and user experience. Built with modern web technologies, it provides a clean interface for sharing thoughts, links, and media. The application leverages Supabase for real-time data synchronization, user authentication, and database management, creating a responsive and interactive social media experience without the complexity of larger platforms.",
       href: "/projects/not-another-microblog",
-      logo: "/checklist-icon.png",
+      logo: "/microblog-icon.svg",
       images: ["/projects/microblog/feed.png", "/projects/microblog/compose.png", "/projects/microblog/profile.png", "/projects/microblog/post.png"],
       tags: ["Supabase", "React", "TypeScript"],
       repositories: [
