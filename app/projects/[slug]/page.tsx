@@ -15,7 +15,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const project = siteConfig.projects.find((p) => p.id === params.slug)
+  const { slug } = await params
+  const project = siteConfig.projects.find((p) => p.id === slug)
   
   if (!project) {
     return {
@@ -34,8 +35,9 @@ export async function generateMetadata({ params }: PageProps) {
   }
 }
 
-export default function ProjectPage({ params }: PageProps) {
-  const project = siteConfig.projects.find((p) => p.id === params.slug)
+export default async function ProjectPage({ params }: PageProps) {
+  const { slug } = await params
+  const project = siteConfig.projects.find((p) => p.id === slug)
 
   if (!project) {
     notFound()

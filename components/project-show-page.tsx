@@ -2,15 +2,121 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, ExternalLink, Github, Globe, Key, Calendar, CheckCircle2 } from "lucide-react"
+import { ArrowLeft, ExternalLink, Github, Globe, Key, Calendar, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import useEmblaCarousel from 'embla-carousel-react'
+import { useCallback, useEffect, useState } from 'react'
 import type { Project } from "@/config/site"
 
 interface ProjectShowPageProps {
   project: Project
+}
+
+interface ProjectImageCarouselProps {
+  images: string[]
+  title: string
+}
+
+function ProjectImageCarousel({ images, title }: ProjectImageCarouselProps) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [canScrollPrev, setCanScrollPrev] = useState(false)
+  const [canScrollNext, setCanScrollNext] = useState(false)
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi])
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi])
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return
+    setSelectedIndex(emblaApi.selectedScrollSnap())
+    setCanScrollPrev(emblaApi.canScrollPrev())
+    setCanScrollNext(emblaApi.canScrollNext())
+  }, [emblaApi])
+
+  useEffect(() => {
+    if (!emblaApi) return
+    onSelect()
+    emblaApi.on('select', onSelect)
+    emblaApi.on('reInit', onSelect)
+  }, [emblaApi, onSelect])
+
+  if (images.length === 1) {
+    // Single image - no carousel needed
+    return (
+      <div className="relative aspect-video rounded-lg overflow-hidden border bg-muted">
+        <Image
+          src={images[0]}
+          alt={`${title} screenshot`}
+          fill
+          className="object-cover"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+        />
+      </div>
+    )
+  }
+
+  return (
+    <div className="relative">
+      {/* Carousel */}
+      <div className="overflow-hidden rounded-lg border bg-muted" ref={emblaRef}>
+        <div className="flex">
+          {images.map((image, index) => (
+            <div key={index} className="flex-[0_0_100%] min-w-0">
+              <div className="relative aspect-video">
+                <Image
+                  src={image}
+                  alt={`${title} screenshot ${index + 1}`}
+                  fill
+                  className="object-cover"
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+                  priority={index === 0}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Navigation Buttons */}
+      <Button
+        variant="outline"
+        size="icon"
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm hover:bg-background/90"
+        onClick={scrollPrev}
+        disabled={!canScrollPrev}
+      >
+        <ChevronLeft className="h-4 w-4" />
+      </Button>
+      
+      <Button
+        variant="outline"
+        size="icon"
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 backdrop-blur-sm hover:bg-background/90"
+        onClick={scrollNext}
+        disabled={!canScrollNext}
+      >
+        <ChevronRight className="h-4 w-4" />
+      </Button>
+
+      {/* Dots Indicator */}
+      <div className="flex justify-center gap-2 mt-4">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full transition-colors ${
+              index === selectedIndex ? 'bg-primary' : 'bg-muted-foreground/30'
+            }`}
+            onClick={() => emblaApi?.scrollTo(index)}
+          />
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export function ProjectShowPage({ project }: ProjectShowPageProps) {
@@ -92,19 +198,10 @@ export function ProjectShowPage({ project }: ProjectShowPageProps) {
               </div>
             </div>
 
-            {/* Project Screenshot */}
+            {/* Project Screenshots */}
             <div className="order-first lg:order-last">
-              {project.images?.[0] ? (
-                <div className="relative aspect-video rounded-lg overflow-hidden border bg-muted">
-                  <Image
-                    src={project.images[0]}
-                    alt={`${project.title} screenshot`}
-                    fill
-                    className="object-cover"
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkbHB0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-                  />
-                </div>
+              {project.images && project.images.length > 0 ? (
+                <ProjectImageCarousel images={project.images} title={project.title} />
               ) : (
                 <div className="aspect-video rounded-lg border bg-muted flex items-center justify-center">
                   <p className="text-muted-foreground">Screenshot coming soon</p>

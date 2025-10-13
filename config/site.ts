@@ -94,7 +94,7 @@ export const siteConfig = {
       detailedDescription: "Riff Remix Hub leverages cutting-edge AI technology to separate audio tracks into individual stems, allowing musicians and producers to isolate and remix individual components of songs. Built with Demucs 4.0.1, it provides high-quality separation of vocals, drums, bass, and guitar tracks. The application features a professional-grade mixing interface with channel strips, transport controls, and real-time audio processing capabilities.",
       href: "/projects/riff-remix-hub",
       logo: "/design-palette-icon.jpg",
-      images: ["/projects/riff-remix/mixer.png", "/projects/riff-remix/separation.png"],
+      images: ["/projects/riff-remix/hero.png", "/projects/riff-remix/show.png", "/projects/riff-remix/mix.png"],
       tags: ["React", "Python", "Supabase", "AI/ML", "Demucs"],
       repositories: [
         {
@@ -138,7 +138,7 @@ export const siteConfig = {
       detailedDescription: "This portfolio website represents a modern approach to professional web presence, built with the latest Next.js 15 and React 19. It features a responsive design system based on Radix UI components, smooth animations, and a comprehensive project showcase system. The site includes dark mode support, optimized performance, and is designed to provide an excellent user experience across all devices while effectively communicating technical skills and project experience.",
       href: "/projects/portfolio-site-2025",
       logo: "/code-brackets-icon.png",
-      images: ["/projects/portfolio/hero.png", "/projects/portfolio/projects.png"],
+      images: ["/projects/portfolio/hero.png", "/projects/portfolio/show.png"],
       tags: ["Next.js", "TypeScript", "Tailwind CSS", "Radix UI"],
       repositories: [
         {
