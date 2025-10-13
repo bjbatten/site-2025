@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="12" fill="#1a1a1a"/>
+  <!-- Audio waveform -->
+  <path d="M8 32h4v0h4v-8h4v16h4v-12h4v20h4v-16h4v24h4v-20h4v16h4v-8h4v4h4v-2h4" 
+        stroke="#10b981" stroke-width="2" fill="none"/>
+  <!-- Speaker icon -->
+  <rect x="44" y="24" width="3" height="16" rx="1" fill="#10b981"/>
+  <path d="M47 26c2 0 3 2 3 6s-1 6-3 6" stroke="#10b981" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M50 22c4 0 6 4 6 10s-2 10-6 10" stroke="#10b981" stroke-width="1.5" stroke-linecap="round"/>
+  <text x="32" y="58" font-family="monospace" font-size="7" fill="#9ca3af" text-anchor="middle">AUDIO</text>
+</svg>

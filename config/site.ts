@@ -50,7 +50,7 @@ export const siteConfig = {
       description: "Comprehensive API monitoring dashboard with real-time metrics, percentile analytics, and service management for tracking HTTP requests across multiple applications.",
       detailedDescription: "Request Atlas is a full-stack application monitoring solution that provides real-time insights into API performance. Built with a modern tech stack, it features JWT authentication, advanced percentile calculations (P50, P95, P99), and comprehensive service management. The dashboard includes interactive charts, KPI cards, and detailed event logging to help developers understand their application's performance characteristics and identify bottlenecks quickly.",
       href: "/projects/request-atlas",
-      logo: "/network-nodes-icon.jpg",
+      logo: "/request-atlas-icon.svg",
       images: ["/projects/request-atlas/dashboard.png", "/projects/request-atlas/metrics.png"],
       tags: ["Next.js", "Node.js", "TypeScript", "Drizzle", "JWT"],
       repositories: [
@@ -93,7 +93,7 @@ export const siteConfig = {
       description: "AI-powered audio stem splitter and mixer using Demucs 4.0.1 to separate vocals, drums, bass, and guitar tracks with professional mixing interface.",
       detailedDescription: "Riff Remix Hub leverages cutting-edge AI technology to separate audio tracks into individual stems, allowing musicians and producers to isolate and remix individual components of songs. Built with Demucs 4.0.1, it provides high-quality separation of vocals, drums, bass, and guitar tracks. The application features a professional-grade mixing interface with channel strips, transport controls, and real-time audio processing capabilities.",
       href: "/projects/riff-remix-hub",
-      logo: "/design-palette-icon.jpg",
+      logo: "/riff-remix-icon.svg",
       images: ["/projects/riff-remix/hero.png", "/projects/riff-remix/show.png", "/projects/riff-remix/mix.png"],
       tags: ["React", "Python", "Supabase", "AI/ML", "Demucs"],
       repositories: [
