@@ -84,8 +84,9 @@ export const siteConfig = {
         "Backend": ["Node.js", "Express", "Drizzle ORM", "Neon PostgreSQL", "JWT"],
         "DevOps": ["Netlify", "Render", "GitHub Actions"]
       },
-      status: "active",
+      status: "archived",
       startDate: "2024-12",
+      endDate: "2025-12",
     },
     {
       id: "riff-remix-hub",
@@ -128,8 +129,9 @@ export const siteConfig = {
         "Database": ["Supabase", "PostgreSQL"],
         "DevOps": ["Netlify", "Railway", "Docker"]
       },
-      status: "active",
+      status: "archived",
       startDate: "2024-10",
+      endDate: "2025-12",
     },
     {
       id: "portfolio-site-2025",
@@ -201,8 +203,9 @@ export const siteConfig = {
         "Auth": ["Supabase Auth", "JWT"],
         "Deployment": ["Netlify", "GitHub Actions"]
       },
-      status: "active",
+      status: "archived",
       startDate: "2024-11",
+      endDate: "2025-12",
     },
   ] as Project[],
 

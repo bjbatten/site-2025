@@ -176,8 +176,16 @@ export function ProjectShowPage({ project }: ProjectShowPageProps) {
                 {project.description}
               </p>
 
+              {project.status === 'archived' && (
+                <div className="mb-6 p-4 rounded-lg border border-amber-500/20 bg-amber-500/5">
+                  <p className="text-sm text-amber-600 dark:text-amber-400">
+                    <strong>Project Status:</strong> This project has been decommissioned and is no longer hosted. The source code and documentation remain available for reference.
+                  </p>
+                </div>
+              )}
+
               <div className="flex flex-wrap gap-3">
-                {project.liveUrl && (
+                {project.liveUrl && project.status !== 'archived' && (
                   <Button asChild size="lg">
                     <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                       <Globe className="h-4 w-4 mr-2" />
@@ -302,13 +310,13 @@ export function ProjectShowPage({ project }: ProjectShowPageProps) {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              {/* Quick Links */}
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Quick Links</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  {project.liveUrl && (
+              {/* Quick Links - Only show for non-archived projects */}
+              {project.status !== 'archived' && project.liveUrl && (
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Quick Links</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
                     <Button className="w-full justify-start" asChild>
                       <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                         <Globe className="h-4 w-4 mr-2" />
@@ -316,9 +324,9 @@ export function ProjectShowPage({ project }: ProjectShowPageProps) {
                         <ExternalLink className="h-4 w-4 ml-auto" />
                       </a>
                     </Button>
-                  )}
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              )}
 
               {/* Repositories */}
               <Card>

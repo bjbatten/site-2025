@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import { ExternalLink, Archive } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -27,9 +28,17 @@ export function Projects() {
                           />
                         </div>
                       )}
-                      <CardTitle className="text-lg group-hover:text-primary transition-colors truncate">
-                        {project.title}
-                      </CardTitle>
+                      <div className="min-w-0 flex-1">
+                        <CardTitle className="text-lg group-hover:text-primary transition-colors truncate">
+                          {project.title}
+                        </CardTitle>
+                        {project.status === 'archived' && (
+                          <Badge variant="outline" className="mt-1 text-xs bg-amber-500/5 text-amber-600 dark:text-amber-400 border-amber-500/20">
+                            <Archive className="h-3 w-3 mr-1" />
+                            Archived
+                          </Badge>
+                        )}
+                      </div>
                     </div>
                     <div className="w-4 h-4 flex-shrink-0 text-muted-foreground group-hover:text-primary transition-colors">
                       →
